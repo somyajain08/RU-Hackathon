@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+
+        .navigate {
+            display: grid;
+            grid-template-columns: 100px auto 100px;
+            align-self: center;
+            align-items: center;
+            align-content: center;
+           
+        }
+
+        .box {
+            /* border: 2px solid black; */
+            height: 100px;
+        }
+
+        /* navigation */
+
+        :root {
+            --font-style: 'Nunito Sans', sans-serif;
+        }
+
+
+
+        ul {
+            /* width: 450px; */
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            padding: 25px 0;
+            border-radius: 25px;
+            /* border: 0.1px solid #099FFF; */
+            background-color: #18181B;
+            box-shadow: 0 4px 8px 0 #00FFFF, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        li {
+            margin: auto;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        li:after {
+            display: block;
+            content: '';
+            border-bottom: solid 1px #00FFFF;
+            padding-bottom: 1%;
+            transform: scaleX(0);
+            transition: transform 300ms ease-in-out;
+        }
+
+        li:hover:after {
+            transform: scaleX(1);
+        }
+
+        /* Processing */
+
+        table {
+            border: 1px solid rgb(182, 245, 136);
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        table caption {
+            font-size: 1.5em;
+            margin: .5em 0 .75em;
+        }
+
+        table tr {
+            background-color: #d5e242;
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+
+        table th {
+            font-size: .85em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        @media screen and (max-width: 600px) {
+            table {
+                border: 0;
+            }
+
+            table caption {
+                font-size: 1.3em;
+            }
+
+            table thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+            }
+
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+            }
+
+            table td::before {
+                /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            table td:last-child {
+                border-bottom: 0;
+            }
+        }
+        /* general styling */
+        body {
+            font-family: "Open Sans", sans-serif;
+            line-height: 1.25;
+        }
+
+        /* Footer */
+        /* * {
+            padding: 0px;
+            margin: 0px;
+        } */
+
+        body {
+            background: #131315;
+            background: url("https://img.freepik.com/free-photo/agriculture-iot-with-rice-field-background_53876-124635.jpg?w=1060&t=st=1665809479~exp=1665810079~hmac=16beb22b69f09ee890a198289fbb90062df38bb25fde97943a8f3f89b9de47c5" )no-repeat;
+            background-size: 100% 200vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .footerr {
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            padding: 0;
+        }
+
+        .footerr div {
+            width: 40px;
+            height: 5px;
+            background-color: #9581F4;
+            margin: auto;
+        }
+
+        .footerr li {
+            position: relative;
+            list-style: none;
+            width: 70px;
+            height: 70px;
+            margin: 0 20px;
+        }
+
+        .footerr li span {
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            display: flex !important;
+            background: #2a2a2a;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 30px !important;
+            transition: 1.5s ease-out;
+        }
+
+        .footerr li:hover span {
+            transition: .3s;
+        }
+
+        .footerr li:nth-child(2):hover span {
+            background: #2C3456 !important;
+        }
+
+        .footerr li:nth-child(3):hover span {
+            background: #6A9AEE !important;
+        }
+
+        .footerr li:nth-child(4):hover span {
+            background: #CC296C !important;
+        }
+
+        .footerr li:nth-child(5):hover span {
+            background: #2C3456 !important;
+        }
+        #demo{
+            background-color: #d5e242;
+            border-radius: 5px;
+
+            border-color: black;
+            font-style: 'Nunito Sans', sans-serif;
+            text-align: center;
+            padding: 30px 0;
+         /* font-size: 30px; */
+           
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+   
+    <table>
+        <caption><h1>Processed Data</h1></caption>
+
+        
+            <label for=""></label>
+            <thead>
+                <tr>
+                <th scope="col">S.no.</th>
+                <th scope="col">JOB 1</th>
+                <th scope="col">JOB 2</th>
+                <th scope="col">JOB 3</th>
+                <th scope="col">JOB 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Account">MACHINE 1</td>
+                <td data-label="a11"><label ></label><input type="number" id="a11"></td>
+                <td data-label="a12"><label ></label><input type="number" id="a12"></td>
+                <td data-label="a13"><label ></label><input type="number" id="a13"></td>
+                <td data-label="a14"><label ></label><input type="number" id="a14"></td>
+            </tr>
+            <tr>
+                
+                <td scope="row" data-label="Account">MACHINE 2</td>
+                <td data-label="a21"><label ></label><input type="number" id="a21"></td>
+                <td data-label="a22"><label ></label><input type="number" id="a22"></td>
+                <td data-label="a23"><label ></label><input type="number" id="a23"></td>
+                <td data-label="a24"><label ></label><input type="number" id="a24"></td>
+                
+            </tr>
+            <tr>
+                <td scope="row" data-label="Account">MACHINE 3</td>
+                <td data-label="a31"><label></label><input type="number" id="a31"></td>
+                <td data-label="a32"><label></label><input type="number" id="a32"></td>
+                <td data-label="a33"><label></label><input type="number" id="a33"></td>
+                <td data-label="a34"><label></label><input type="number" id="a34"></td>
+                
+            </tr>
+            <tr>
+                <td scope="row" data-label="Account">MACHINE 4</td>
+                <td data-label="a41"><label></label><input type="number" id="a41"></td>
+                <td data-label="a42"><label></label><input type="number" id="a42"></td>
+                <td data-label="a43"><label></label><input type="number" id="a43"></td>
+                <td data-label="a44"><label></label><input type="number" id="a44"></td>
+                
+            </tr>
+        </table><br><br><br>
+        <center>    
+            <button input type="submit" value="Submit" onclick="Run()">SUBMIT</button>
+            <div id="demo" style="height: 100px; width: 250px;">
+
+            </div>
+        </center>
+            
+        </tbody>
+
+    
+   
+
+
+
+
+    <script>
+        function Run() {
+          let sol = []
+          let i2 = 0
+          class Node {
+            constructor(parent, pathCost, cost, workerID, jobID, assigned) {
+              this.parent = parent;
+              this.pathCost = pathCost;
+              this.cost = cost;
+              this.workerID = workerID;
+              this.jobID = jobID;
+              this.assigned = assigned.slice();
+            }
+          }
+  
+          function newNode(x, y, assigned, parent) {
+            let node = new Node(parent, 0, 0, x, y, []);
+            for (let j = 0; j < N; j++) {
+              node.assigned[j] = assigned[j];
+            }
+            node.assigned[y] = true;
+            return node;
+          }
+  
+          function calculateCost(costMatrix, x, y, assigned) {
+            let cost = 0;
+            let available = Array(N).fill(true);
+            for (let i = x + 1; i < N; i++) {
+              let min = Number.MAX_SAFE_INTEGER, minIndex = -1;
+              for (let j = 0; j < N; j++) {
+                if (!assigned[j] && available[j] && costMatrix[i][j] < min) {
+                  minIndex = j;
+                  min = costMatrix[i][j];
+                }
+              }
+              cost += min;
+              available[minIndex] = false;
+            }
+            return cost;
+          }
+  
+          class MinHeap {
+            constructor() {
+              this.heap = [];
+            }
+  
+            getLeftChildIndex(parentIndex) {
+              return 2 * parentIndex + 1;
+            }
+  
+            getRightChildIndex(parentIndex) {
+              return 2 * parentIndex + 2;
+            }
+  
+            getParentIndex(childIndex) {
+              return Math.floor((childIndex - 1) / 2);
+            }
+  
+            hasLeftChild(index) {
+              return this.getLeftChildIndex(index) < this.heap.length;
+            }
+  
+            hasRightChild(index) {
+              return this.getRightChildIndex(index) < this.heap.length;
+            }
+  
+            hasParent(index) {
+              return this.getParentIndex(index) >= 0;
+            }
+  
+            leftChild(index) {
+              return this.heap[this.getLeftChildIndex(index)];
+            }
+  
+            rightChild(index) {
+              return this.heap[this.getRightChildIndex(index)];
+            }
+  
+            parent(index) {
+              return this.heap[this.getParentIndex(index)];
+            }
+  
+            swap(indexOne, indexTwo) {
+              let temp = this.heap[indexOne];
+              this.heap[indexOne] = this.heap[indexTwo];
+              this.heap[indexTwo] = temp;
+            }
+  
+            peek() {
+              if (this.heap.length === 0) {
+                return null;
+              }
+              return this.heap[0];
+            }
+  
+            poll() {
+              if (this.heap.length === 0) {
+                return null;
+              }
+              if (this.heap.length === 1) {
+                return this.heap.pop();
+              }
+              let item = this.heap[0];
+              this.heap[0] = this.heap.pop();
+              this.heapifyDown();
+              return item;
+            }
+  
+            add(item) {
+              this.heap.push(item);
+              this.heapifyUp();
+            }
+  
+            heapifyUp() {
+              let index = this.heap.length - 1;
+              while (this.hasParent(index) && this.parent(index).cost > this.heap[index].cost) {
+                this.swap(this.getParentIndex(index), index);
+                index = this.getParentIndex(index);
+              }
+            }
+  
+            heapifyDown() {
+              let index = 0;
+              while (this.hasLeftChild(index)) {
+                let smallerChildIndex = this.getLeftChildIndex(index);
+                if (this.hasRightChild(index) && this.rightChild(index).cost < this.leftChild(index).cost) {
+                  smallerChildIndex = this.getRightChildIndex(index);
+                }
+                if (this.heap[index].cost < this.heap[smallerChildIndex].cost) {
+                  break;
+                } else {
+                  this.swap(index, smallerChildIndex);
+                }
+                index = smallerChildIndex;
+              }
+            }
+  
+            isEmpty() {
+              return this.heap.length === 0;
+            }
+          }
+  
+          function printAssignments(min) {
+            if (min.parent === null) {
+              return;
+            }
+            printAssignments(min.parent);
+            console.log(`${String.fromCharCode(min.workerID + 65)} ---> ${min.jobID}`);
+            document.getElementById("demo").innerHTML = `${String.fromCharCode(min.workerID + 65)} ---- ${min.jobID}`;
+          }
+  
+  
+  
+          function printAssignments(min) {
+            if (min.parent === null) {
+              return;
+            }
+            printAssignments(min.parent);
+            
+            let temp = []
+  
+            temp[0] = "MACHINE "+String.fromCharCode(min.workerID + 65)
+            temp[1] = "JOB"+(min.jobID+1)
+            sol.push(temp)
+          }
+  
+          const N = 4;
+  
+  
+          const INT_MAX = Number.MAX_SAFE_INTEGER;
+  
+          let costMatrix = [
+            [document.getElementById("a11").value,document.getElementById("a12").value,document.getElementById("a13").value,document.getElementById("a14").value],
+            [document.getElementById("a21").value,document.getElementById("a22").value,document.getElementById("a23").value,document.getElementById("a24").value],
+            [document.getElementById("a31").value,document.getElementById("a32").value,document.getElementById("a33").value,document.getElementById("a34").value],
+            [document.getElementById("a41").value,document.getElementById("a42").value,document.getElementById("a43").value,document.getElementById("a44").value]
+          ];
+  
+          let minHeap = new MinHeap();
+          let root = newNode(-1, -1, Array(N).fill(false), null);
+          root.cost = 0;
+          root.pathCost = 0;
+          minHeap.add(root);
+          while (!minHeap.isEmpty()) {
+            let min = minHeap.poll();
+            if (min.workerID === N - 1) {
+              printAssignments(min);
+              break;
+            }
+            for (let j = 0; j < N; j++) {
+              if (!min.assigned[j]) {
+                let child = newNode(min.workerID + 1, j, min.assigned, min);
+                child.pathCost = min.pathCost + costMatrix[child.workerID][child.jobID];
+                child.cost = child.pathCost + calculateCost(costMatrix, child.workerID, child.jobID, child.assigned);
+                minHeap.add(child);
+              }
+            }
+         
+            }
+       
+            const string = JSON.stringify(sol, null, 5);
+            document.getElementById("demo").innerHTML = string;
+            
+
+        }
+  
+      </script>
+  
+
+
+
+
+</body>
+
+
+</html>
